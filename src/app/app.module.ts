@@ -21,6 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PlaceorderComponent } from './placeorder/placeorder.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     UsercartComponent,
     FooterComponent,
     PlaceorderComponent,
-    WishlistComponent
+    WishlistComponent,
+   
       
   ],
   imports: [

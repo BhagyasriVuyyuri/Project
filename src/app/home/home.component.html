@@ -21,24 +21,42 @@
         <a class="nav-link"  routerLink="/home" routerLinkActive="active"><i class="fas fa-home p-2"></i>Home</a>
         </h5>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="username==null">  
         <h5>
         <a class="nav-link"  routerLink="/login" routerLinkActive="active"><i class="fas fa-sign-in-alt p-2"></i>Login</a>
         </h5>
       </li>
-      <li class="nav-item">
+      
+      <li class="nav-item" *ngIf="username==null">
         <h5>
-        <a class="nav-link" routerLink="/register" routerLinkActive="active"><i class="fas fa-align-left p-2"></i>Register</a>
+        <a class="nav-link"  routerLink="/register" routerLinkActive="active"><i class="fas fa-align-left p-2"></i>Register</a>
+        </h5>
+      </li> 
+      <li class="nav-item" *ngIf="username!=null">
+        <h5>
+        <h3><h4 class="fas fa-user text-info p-2"></h4>{{username}}</h3>
         </h5>
       </li>
-     
+      <li class="nav-item" *ngIf="username!=null">
+       <h5>
+        <a routerLink="" (click)="showUserCart()">
+          <h4 class="fas fa-cart-arrow-down  text-danger text-center mt-3">
+              <sup class="text-danger float-end">
+                  {{userCartSize}}
+              </sup>
+          </h4>
+      </a>
+       </h5>
+      </li>
+      
     </ul>
     
   </div>
 
 </nav>
-<div class="bg-light text-center" *ngIf="username!=null">
-    <h3><h4 class="fas fa-user text-info p-2"></h4>{{username}}</h3>
+
+ <div class="bg-light text-center" *ngIf="username!=null"> 
+    <h3><h4 class="fas fa-user text-info p-2"></h4>Welcome,{{username}}</h3>
       
         <a routerLink="" (click)="showUserCart()">
             <h4 class="fas fa-cart-arrow-down  text-danger text-center mt-3">
@@ -47,22 +65,24 @@
                 </sup>
             </h4>
         </a>
-        <a routerLink="" (click)="showorders()" class="m-5">My Orders<h4 class="fas fa-list-alt text-info text-center mt-3">
+        <a routerLink="" (click)="showorders()" class="m-5" style="text-decoration: none;">My Orders<h4 class="fas fa-list-alt text-info text-center mt-3">
           <sup class="text-info float-end">
             {{userOrderSize}}
         </sup>
         </h4>
          
       </a>
-      <a routerLink="" (click)="showwishlist()" class="m-5">WishList</a>
+      <a routerLink="" (click)="showwishlist()" class="m-5" style="color: darkmagenta;text-decoration: none;"><h5 class="fas fa-heart m-1"></h5>WishList</a>
        
     <button class=" btn btn-success px-4 float-end" (click)="logout()"><h6 class="fas fa-sign-out-alt m-1"></h6><b>Logout</b></button>
 
   </div>
 
+
   
+    
   <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
-    <ol class="carousel-indicators">
+    <ol class="carousel-indicators ">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
@@ -135,7 +155,7 @@
               <div class="card border-success mb-3 mt-3" style="border-radius: 5%;height: 35rem;">
                 <img [src]=p.productImgLink class="card-img-top mx-auto mt-2" style="height: 200px;width:200px;" alt="...">
                   <div class="card-body">
-                    <h5 class="card-title text-center">{{p.productname}}</h5>
+                    <h5 class="card-title text-center" style="color: darkmagenta;">{{p.productname}}</h5>
                     <h5 class="card-text text-center">{{p.brand}}</h5>
                 
                     <h5 class="card-text text-center">{{(p.cost)| currency:"INR"}}</h5>
@@ -145,7 +165,7 @@
                   <div class="card-footer bg-transparent border-success">
                         <div>
                           <a  class="btn btn-warning" style="float: left;margin: 10px;" (click)="viewitem(p)"><h5 class="fas fa-eye m-1"></h5>View</a>
-                          <a class="btn btn-primary " style="float: right;margin: 10px;" (click)="wishlist(i)"><h5 class="fas fa-heart"></h5>Wish</a>
+                          <a class="btn btn-primary " style="float: right;margin: 10px;" (click)="wishlist(i)"><h5 class="fas fa-heart "></h5>Wish</a>
            
                         </div>
                         <div>
@@ -163,7 +183,7 @@
              <div class="card border-success mb-3 mt-3" style="border-radius: 5%;height: 35rem;">
                <img [src]=p.productImgLink class="card-img-top mx-auto mt-2" style="height: 200px;width:200px;" alt="...">
                  <div class="card-body">
-                   <h5 class="card-title text-center">{{p.productname}}</h5>
+                   <h5 class="card-title text-center" style="color: darkmagenta;">{{p.productname}}</h5>
                    <h5 class="card-text text-center">{{p.brand}}</h5>
                
                    <h5 class="card-text text-center">{{(p.cost)| currency:"INR"}}</h5>
@@ -172,8 +192,10 @@
                  </div>
                  <div class="card-footer bg-transparent border-success">
                        <div>
-                         <a  class="btn btn-warning" style="float: left;margin: 10px;" (click)="viewitem(p)"><h5 class="fas fa-eye m-1"></h5>View Product</a>
-                       </div>
+                         <a  class="btn btn-warning" style="float: left;margin: 10px;" (click)="viewitem(p)"><h5 class="fas fa-eye m-1"></h5>View</a>
+                         <a class="btn btn-primary " style="float: right;margin: 10px;" (click)="wishlist(i)"><h5 class="fas fa-heart "></h5>Wish</a>
+           
+                        </div>
                        <div>
                          <a   class="btn btn-info" style="float:right;margin: 10px;color: darkmagenta;" (click)="additem(i)">Add to Cart<h5 class="fas fa-cart-arrow-down m-1"></h5></a>
                        </div>

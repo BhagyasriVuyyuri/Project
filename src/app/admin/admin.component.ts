@@ -21,9 +21,11 @@ export class AdminComponent implements OnInit {
   }
   adminname;
   registerForm:FormGroup;
+ 
   constructor(private as:AdminService,private router:Router,private toastr:ToastrService) { }
-
+  
   ngOnInit(): void {
+   // window.location.reload();
     this.username=localStorage.username;
     this.adminname=localStorage.getItem("adminname")
 
@@ -43,6 +45,7 @@ export class AdminComponent implements OnInit {
   logout(){
     localStorage.clear();
     this.router.navigateByUrl("/login");
+    
   }
 
   onSubmit(){   
