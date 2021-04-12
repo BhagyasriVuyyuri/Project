@@ -32,22 +32,7 @@
         <a class="nav-link"  routerLink="/register" routerLinkActive="active"><i class="fas fa-align-left p-2"></i>Register</a>
         </h5>
       </li> 
-      <li class="nav-item" *ngIf="username!=null">
-        <h5>
-        <h3><h4 class="fas fa-user text-info p-2"></h4>{{username}}</h3>
-        </h5>
-      </li>
-      <li class="nav-item" *ngIf="username!=null">
-       <h5>
-        <a routerLink="" (click)="showUserCart()">
-          <h4 class="fas fa-cart-arrow-down  text-danger text-center mt-3">
-              <sup class="text-danger float-end">
-                  {{userCartSize}}
-              </sup>
-          </h4>
-      </a>
-       </h5>
-      </li>
+      
       
     </ul>
     
@@ -56,7 +41,7 @@
 </nav>
 
  <div class="bg-light text-center" *ngIf="username!=null"> 
-    <h3><h4 class="fas fa-user text-info p-2"></h4>Welcome,{{username}}</h3>
+    <h3><h4 class="fas fa-user text-info p-2"></h4>{{username}}</h3>
       
         <a routerLink="" (click)="showUserCart()">
             <h4 class="fas fa-cart-arrow-down  text-danger text-center mt-3">
