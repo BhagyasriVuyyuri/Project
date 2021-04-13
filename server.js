@@ -7,16 +7,17 @@ const mc=require("mongodb").MongoClient;
 app.use(exp.static(path.join(__dirname,"./dist/FLIPKARTAPP")))
 
 const userApiObj=require("./APIS/userApi")
-
 const adminApiObj = require("./APIS/adminApi");
 const cartApiObj=require("./APIS/cartApi")
 const orderApiObj=require("./APIS/orderApi")
 const wishlistApiObj=require("./APIS/wishlistApi")
+
 app.use("/user",userApiObj)
 app.use("/admin",adminApiObj);
 app.use("/cart",cartApiObj)
 app.use("/order",orderApiObj)
 app.use("/wish",wishlistApiObj)
+
 const dburl=process.env.dburl
  
 mc.connect(dburl,{useNewUrlParser:true,useUnifiedTopology:true})
