@@ -8,7 +8,7 @@ app.use(exp.static(path.join(__dirname,"./dist/FLIPKARTAPP")))
 
 const userApiObj=require("./APIS/userApi")
 
-const adminApiObj = require("./APIs/adminApi");
+const adminApiObj = require("./APIS/adminApi");
 const cartApiObj=require("./APIS/cartApi")
 const orderApiObj=require("./APIS/orderApi")
 const wishlistApiObj=require("./APIS/wishlistApi")
