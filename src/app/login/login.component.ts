@@ -13,8 +13,8 @@ import { UserService } from '../user.service';
 export class LoginComponent implements OnInit {
 
   loginForm:FormGroup;
-  s1:any;
-  status:any;
+ 
+ 
    errormessage;
   constructor(private as:AdminService,private router:Router,private us:UserService,private toastr:ToastrService) { }
 

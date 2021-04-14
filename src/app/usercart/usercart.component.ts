@@ -107,16 +107,16 @@ export class UsercartComponent implements OnInit {
       for(let j=0;j<this.itemsArray.length;j++){
         if(this.cart[i].productname==this.itemsArray[j].productname){
           this.status=true;
-          this.cart[i].status="Available";//adds status as available to the cart element
-          console.log("available");
+          this.cart[i].status="Available";
+          
           break;
         }
       }
       if(this.cart[i].status!="Available"){
         this.cart[i].status="Unavailable";
-        console.log("unavailable");
+        
       }
-      //console.log(this.cart[i])
+     
     }
     this.totalamount();
   }

@@ -9,7 +9,7 @@ export class RouteGuard implements CanActivate {
     canActivate():boolean{
       //check token in local storage
       let token=localStorage.getItem("token")
-      if(token==undefined){
+      if(!token){
         alert("un authorized access")
         return false;
       }
