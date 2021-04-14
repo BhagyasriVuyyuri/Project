@@ -3,7 +3,6 @@
    
  
   <div class="bg-light px-5 text-right" style="height: 80px;">
-        <!-- <a routerLink="/admincomp" style="color: rebeccapurple;text-decoration: none;margin-top: 30px;" routerLinkActive="active"><b>Add Product </b></a> -->
         <button class="btn btn-success  px-4 my-4 float-end" (click)="logout()"><h6 class="fas fa-sign-out-alt m-1"></h6><b>Logout</b></button>
        
         <button class="btn btn-warning  px-4 my-4 float-start m-1" (click)="back()"><h5 class="fas fa-plus-circle"></h5><b>Add New Product</b></button>
@@ -12,7 +11,17 @@
     </div>
 
     <h1 style="text-align: center;">All Products({{count}})</h1>
-   <div class="container mt-5 col-md-12">
+     <div class=" d-flex align-items-center justify-content-center" id="spin" *ngIf="spinner==0" style="height: 550px;">
+        
+      
+        <div class="spinner-border text-primary" role="status" >
+            
+          <span class="visually-hidden">Loading...</span>
+         
+        </div>
+        <div><h2 style="color:blue">  LOADING...</h2></div>
+      </div>
+   <div class="container mt-5 col-md-12" *ngIf="spinner==1">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
       <div *ngFor="let p of products,let i=index">
          <div class="col">

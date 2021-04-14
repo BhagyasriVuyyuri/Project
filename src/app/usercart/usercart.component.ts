@@ -16,6 +16,7 @@ export class UsercartComponent implements OnInit {
   userOrderSize;
   itemsArray=[];
   status=false;
+  spinner:any=0;
   constructor(private us:UserService,private router:Router,private toastr:ToastrService) { }
 
   ngOnInit(): void {
@@ -87,6 +88,7 @@ export class UsercartComponent implements OnInit {
   getCart(){
     this.us.getCartItems(this.username).subscribe(
       res=>{
+        this.spinner=1
         this.cart=res["message"]
         this.itemsArray=res.itemsArray;
         console.log("the cart items",this.cart)

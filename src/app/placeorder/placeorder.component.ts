@@ -12,6 +12,7 @@ export class PlaceorderComponent implements OnInit {
 
   username:any;
   order:any;
+  spinner:any=0;
   constructor(private us:UserService,private router:Router,private toastr:ToastrService) { }
 
   ngOnInit(): void {
@@ -29,6 +30,7 @@ export class PlaceorderComponent implements OnInit {
   getCart(){
     this.us.getOrderItems(this.username).subscribe(
       res=>{
+        this.spinner=1
         this.order=res["message"]
         console.log("placeorder data is",this.order)
       },

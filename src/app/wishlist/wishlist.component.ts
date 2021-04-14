@@ -17,6 +17,7 @@ export class WishlistComponent implements OnInit {
   product;
   successmessage;
   errormessage;
+  spinner:any=0;
   constructor(private us:UserService, private router:Router, private toastr:ToastrService) { }
 
   ngOnInit(): void {
@@ -29,6 +30,7 @@ export class WishlistComponent implements OnInit {
   getWishlist(){
     this.us.getWishlistItems(this.username).subscribe(
       res=>{
+        this.spinner=1
         this.wishlist=res.message
         //console.log("the wishlist items",this.wishlist)
       },

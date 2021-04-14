@@ -1,7 +1,17 @@
 
 <div class="container">
     <h2 class="text-center mb-5">Wishlist of {{username}}</h2>
-    <div class="row">
+     <div class=" d-flex align-items-center justify-content-center" *ngIf="spinner==0" style="height: 550px;">
+        
+      
+  <div class="spinner-border text-primary" role="status" >
+      
+    <span class="visually-hidden">Loading...</span>
+   
+  </div>
+  <div><h2 style="color:blue">LOADING...</h2></div>
+</div>
+    <div class="row" *ngIf="spinner==1">
         <div class="col-md-6 mb-3" *ngFor="let p of wishlist,let i=index">    
             <div class="card mb-3 mx-3">
                 <div class="row no-gutters">
