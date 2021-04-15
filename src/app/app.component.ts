@@ -12,10 +12,15 @@ export class AppComponent implements OnInit {
   title = 'FLIPKARTAPP';
   username;
  
-  constructor(){}
+  constructor(private router:Router){}
   ngOnInit():void{
     this.username=localStorage.getItem("username")
   
   
-}
+  }
+  logout(){
+    localStorage.clear();
+    this.router.navigateByUrl("login")
+   // window.location.reload();
+  }
 }

@@ -1,16 +1,21 @@
-
+<div class="container-fluid" style="background-image: url('https://kalyandiocese.com/wp-content/uploads/2015/07/sony-background.jpg');background-repeat: no-repeat;background-size: cover;height: 100%;">
+<div class="bg-light px-5 text-right">
+  <button class="btn btn-warning float-start mt-2" (click)="back()"><h5 class="fas fa-backward"></h5>Back</button>
+</div>
 <div class="container">
-    <h2 class="text-center mb-5">Wishlist of {{username}}</h2>
+  
+
+    <h2 class="text-center mb-5" style="color:white">Wishlist of {{username}}</h2>
      <div class=" d-flex align-items-center justify-content-center" *ngIf="spinner==true" style="height: 550px;">
         
       
-  <div class="spinner-border text-primary" role="status" >
+          <div class="spinner-border text-primary" role="status" >
       
-    <span class="visually-hidden">Loading...</span>
+              <span class="visually-hidden">Loading...</span>
    
-  </div>
-  <div><h2 style="color:blue">LOADING...</h2></div>
-</div>
+           </div>
+       <div><h2 style="color:blue">LOADING...</h2></div>
+    </div>
     <div class="row" *ngIf="spinner==false">
         <div class="col-md-6 mb-3" *ngFor="let p of wishlist,let i=index">    
             <div class="card mb-3 mx-3">
@@ -21,11 +26,11 @@
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">
-                        <h1 class="card-title mb-2">{{p.productname}}</h1>
-                        <p class="card-title"> {{p.productID}}</p>
-                        <p class="card-title"> {{p.brand}}</p>
-                        <p class="card-title"> {{p.colour}}</p>
-                        <p class="card-title price">Price: {{p.cost | currency:"INR"}}</p>
+                        <h1 class="card-title mb-2" style="color: darkblue;">{{p.productname}}</h1>
+                        <p class="card-title">Product ID: <b>{{p.productID}}</b></p>
+                        <p class="card-title"> Brand:<b>{{p.brand}}</b></p>
+                        <p class="card-title"> Colour:<b>{{p.colour}}</b></p>
+                        <p class="card-title price">Price:<b> {{p.cost | currency:"INR"}}</b></p>
                         <p class="card-title pb-4">Rating:<ngb-rating [max]="5" [rate]="p.rating" [readonly]="true"></ngb-rating></p>
                                         
                         <button class="btn btn-danger btn-sm mb-auto d-block float-start"(click)="delete(i)"><h6 class="fas fa-times-circle m-1"></h6>Remove</button>
@@ -37,4 +42,5 @@
         </div>
     </div>
      
+  </div>
 </div>

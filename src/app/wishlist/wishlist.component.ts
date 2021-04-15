@@ -55,6 +55,9 @@ export class WishlistComponent implements OnInit {
     )
 
   }
+  back(){
+    this.router.navigateByUrl("/home")
+  }
 
   additem(p){
     if(this.username!==null){

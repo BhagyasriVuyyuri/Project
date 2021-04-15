@@ -32,10 +32,18 @@
         <a class="nav-link"  routerLink="/register" routerLinkActive="active"><i class="fas fa-align-left p-2" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"></i>Register</a>
         </h5>
       </li> 
+  
+      
       
       
     </ul>
-    
+    <ul class="navbar-nav  ms-auto">
+      <li class="nav-item mt-1 " *ngIf="username!=null" >
+        <h4>
+        <a class="nav-link btn " style="color: darkmagenta;"  (click)="logout()" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"><i class="fa fa-sign-out" aria-hidden="true"></i><b>Sign Out</b></a>
+        </h4>
+      </li>
+    </ul>
   </div>
 
 </nav>
@@ -59,8 +67,7 @@
       </a>
       <a routerLink="" (click)="showwishlist()" class="m-5" style="color: darkmagenta;text-decoration: none;"><h5 class="fas fa-heart m-1"></h5>WishList</a>
        
-    <button class=" btn btn-success px-4 float-end" (click)="logout()"><h6 class="fas fa-sign-out-alt m-1"></h6><b>Logout</b></button>
-
+  
   </div>
 
 

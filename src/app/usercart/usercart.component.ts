@@ -151,13 +151,14 @@ export class UsercartComponent implements OnInit {
       username:this.username,
       userId:this.userId,
       productname:this.cart[n].productname,
-
+      productID:this.cart[n].productID,
       colour:this.cart[n].colour,
     
       cost:this.cart[n].cost,
       brand:this.cart[n].brand,
       productImgLink:this.cart[n].productImgLink,
       rating:this.cart[n].rating,
+      description:this.cart[n].description,
       quantity:this.cart[n].quantity
       }
       
