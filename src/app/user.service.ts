@@ -60,7 +60,7 @@ export class UserService {
     return this.hc.get("/order/ordersize/"+username);
   }
   deleteOrder1(obj:any):Observable<any>{
-    console.log("service delete is",obj)
+   
     return this.hc.post("/order/deleteOrder1",obj);
     
   }

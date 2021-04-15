@@ -84,22 +84,40 @@ adminApiObj.post("/viewproduct",asyncHandler(async(req,res,next)=>{
 //get one products
 
 
-adminApiObj.get("/getproductdata/:productname",asyncHandler(async (req,res,next)=>{
 
-    let productCollectionObj = req.app.get("productCollectionObj") ;
-  
-    let proObj=await productCollectionObj.findOne({productname:req.params.productname});
-    
-    console.log("product is",proObj);
-    if(proObj!==null){
-        res.send({Details:proObj})
-    }
-    else{
-        res.send({message:"product not found"})
-    }
-    
-    }))
+adminApiObj.get("/getproductdata/:productID",asyncHandler(async (req,res,next)=>{
 
+        let productCollectionObj = req.app.get("productCollectionObj") ;
+       // let pobj=req.body;
+        //console.log("pobj is",pobj)
+        let proObj=await productCollectionObj.findOne({productID:parseInt(req.params.productID)});
+        
+        console.log("product is",proObj);
+        if(proObj!==null){
+            res.send({Details:proObj})
+        }
+        else{
+            res.send({message:"product not found"})
+        }
+        
+}))
+adminApiObj.get("/getproductdetails/:productname",asyncHandler(async (req,res,next)=>{
+    
+            let productCollectionObj = req.app.get("productCollectionObj") ;
+           // let pobj=req.body;
+            //console.log("pobj is",pobj)
+            let proObj=await productCollectionObj.findOne({productname:req.params.productname});
+            
+            console.log("product is",proObj);
+            if(proObj!==null){
+                res.send({Details:proObj})
+            }
+            else{
+                res.send({message:"product not found"})
+            }
+            
+}))
+   
 adminApiObj.put("/updateproduct",asyncHandler(async(req,res,next)=>{
     //console.log(req.body)
     let Allproducts=req.app.get("productCollectionObj")

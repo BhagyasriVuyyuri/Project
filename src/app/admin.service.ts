@@ -25,8 +25,11 @@ export class AdminService {
   }
   
 
-  getproductdata(productname):Observable<any>{
-    return this.hc.get("/admin/getproductdata/"+productname);
+  getproductdata(productID):Observable<any>{
+    return this.hc.get("/admin/getproductdata/"+productID);
+  }
+  getproductdetails(productname):Observable<any>{
+    return this.hc.get("/admin/getproductdetails/"+productname);
   }
   viewItem(obj):Observable<any>{
     return this.hc.post("/viewproduct",obj)

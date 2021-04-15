@@ -25,14 +25,14 @@ export class ViewproductComponent implements OnInit {
     this.getProduct();
   }
    getProduct(){
-     this.as.getproductdata(this.productname).subscribe(
+     this.as.getproductdetails(this.productname).subscribe(
       res=>{
         if(["Details"]){
           this.product=res.Details
           console.log(this.product)
         }
         else{
-          alert("book not found")
+          alert("product not found")
         }
       },
       err=>{
@@ -79,7 +79,7 @@ export class ViewproductComponent implements OnInit {
          
       
         err=>{
-          alert("Something went wrong in Adding Course")
+          alert("Something went wrong in adding product")
         console.log(err)
         }
       )
@@ -127,7 +127,7 @@ export class ViewproductComponent implements OnInit {
          
       
         err=>{
-          alert("Something went wrong in Adding Course")
+          alert("Something went wrong in adding product")
         console.log(err)
         }
       )

@@ -10,11 +10,11 @@ import { AdminService } from 'src/app/admin.service';
 })
 export class EditproductComponent implements OnInit {
 
-  productname;
+  productID;
   currentRate;
   successmessage;
     registerForm=new FormGroup({
-    productID:new FormControl(''),
+    productID:new FormControl({value:'',disabled:true}),
     productname:new FormControl(''),
     brand:new FormControl(''),
     category:new FormControl(''),
@@ -29,7 +29,7 @@ export class EditproductComponent implements OnInit {
   constructor(private as:AdminService,private router:Router,private toastr:ToastrService) { }
 
   ngOnInit(): void {
-    this.productname=localStorage.getItem("productname");
+    this.productID=localStorage.getItem("productID");
     this.getproductdata();
  
     
@@ -41,7 +41,7 @@ export class EditproductComponent implements OnInit {
     this.router.navigateByUrl("/allproducts")
   }
   getproductdata(){
-  this.as.getproductdata(this.productname).subscribe(
+  this.as.getproductdata(this.productID).subscribe(
     res=>{
               
         console.log(res)
