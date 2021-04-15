@@ -68,11 +68,10 @@
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">User registered successfully</h5>
-          <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="login()"></button>
         </div>
         <div class="modal-body">
-           UserId is :{{userId}}
+          Your UserID is :{{userId}}
         </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary d-block mx-auto" data-bs-dismiss="modal" (click)="login()">Close</button>
