@@ -45,11 +45,11 @@ orderApiObj.post("/orders",asynchandler(async(req,res,next)=>{
     
 }))
 
-orderApiObj.get("/getOrderitem/:username",asynchandler(async(req,res,next)=>{
+orderApiObj.get("/getOrderitem/:userId",asynchandler(async(req,res,next)=>{
 
     let orderCollectionObj = req.app.get("orderCollectionObj");
     
-    let products = await orderCollectionObj.find({username:req.params.username}).toArray();
+    let products = await orderCollectionObj.find({userId:req.params.userId}).toArray();
     res.send({message:products})
     console.log(products)
 }))
@@ -73,10 +73,10 @@ orderApiObj.post("/deleteOrder",asynchandler(async(req,res,next)=>{
     }
 
 }))
-orderApiObj.get("/ordersize/:username",asynchandler(async(req,res,next)=>{
+orderApiObj.get("/ordersize/:userId",asynchandler(async(req,res,next)=>{
     let orderCollectionObj = req.app.get("orderCollectionObj");
     
-    let order=await orderCollectionObj.find({username:req.params.username}).toArray();
+    let order=await orderCollectionObj.find({userId:req.params.userId}).toArray();
     let orderlength=order.length;
     res.send({ordersize:orderlength } );
     //console.log("the size is ",cart);

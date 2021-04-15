@@ -28,30 +28,30 @@ userApiObj.post("/register", asynchandler(async  (req,res,next)=>{
   }))
   
   userApiObj.post("/login", asynchandler(async  (req,res,next)=>{
-      //res.send("i am from user api")
+    //res.send("i am from user api")
+
+    let userCollectionObj=req.app.get("userCollectionObj")
+    let userCredObj=req.body;
+    let user=await userCollectionObj.findOne({username:userCredObj.username})
+    if(user==null){
+        res.send({message:"Invalid Username"})
+    }
+    else{
+       
+        let status=await bc.compare(userCredObj.password,user.password)
+        if(status==true){
+        
+          let token=await jwt.sign({username:user.username},process.env.secret,{expiresIn:10})
+          res.send({message:"success",signedToken:token,userId:user.userId,username:user.username})
   
-      let userCollectionObj=req.app.get("userCollectionObj")
-      let userCredObj=req.body;
-      let user=await userCollectionObj.findOne({username:userCredObj.username})
-      if(user==null){
-          res.send({message:"Invalid Username"})
-      }
-      else{
-         
-          let status=await bc.compare(userCredObj.password,user.password)
-          if(status==true){
-          
-            let token=await jwt.sign({username:user.username},process.env.secret,{expiresIn:10})
-            res.send({message:"success",signedToken:token,username:user.username})
+        }
+        else{
+            res.send({message:"Invalid password"})
+        }
+    }
     
-          }
-          else{
-              res.send({message:"Invalid password"})
-          }
-      }
-      
-     
-  }))
+   
+}))
   userApiObj.post("/resetpassword",asynchandler(async(req,res,next)=>{
 
     userCollectionObj = req.app.get("userCollectionObj");

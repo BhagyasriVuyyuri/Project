@@ -12,33 +12,33 @@ cartApiObj.post("/addtocart",asynchandler(async(req,res,next)=>{
     let cardCollectionObj= req.app.get("cardCollectionObj");
 
     let cartObj=req.body;
-    let prd = await cardCollectionObj.findOne({productname:cartObj.productname,username:cartObj.username})
+    let prd = await cardCollectionObj.findOne({productname:cartObj.productname,userId:cartObj.userId})
    if(prd==null){
-    let userCart = await cardCollectionObj.find({  username:req.body.username});
+    let userCart = await cardCollectionObj.find({  userId:req.body.userId});
         await cardCollectionObj.insertOne(cartObj);
         res.send({message:"success",cartsize:userCart.length})
   
         
    }
     else{
-        let userCart = await cardCollectionObj.find({  username:req.body.username});
+        let userCart = await cardCollectionObj.find({  userId:req.body.userId});
      res.send({message:"Item already added",cartsize:userCart.length})
     }
 }))
 
-cartApiObj.get("/getcartitems/:username",asynchandler(async(req,res,next)=>{
+cartApiObj.get("/getcartitems/:userId",asynchandler(async(req,res,next)=>{
 
     let cardCollectionObj = req.app.get("cardCollectionObj");
     let productCollectionObj=req.app.get("productCollectionObj");
     let items=await productCollectionObj.find().toArray()
-    let products = await cardCollectionObj.find({username:req.params.username}).toArray();
+    let products = await cardCollectionObj.find({userId:req.params.userId}).toArray();
     res.send({message:products,itemsArray:items})
     //console.log(products)
 }))
-cartApiObj.get("/getsize/:username",asynchandler(async(req,res,next)=>{
+cartApiObj.get("/getsize/:userId",asynchandler(async(req,res,next)=>{
     let cardCollectionObj = req.app.get("cardCollectionObj");
     
-    let cart=await cardCollectionObj.find({username:req.params.username}).toArray();
+    let cart=await cardCollectionObj.find({userId:req.params.userId}).toArray();
     let cartlength=cart.length;
     res.send({cartsize:cartlength } );
     //console.log("the size is ",cart);
@@ -59,4 +59,5 @@ cartApiObj.post("/deleteproduct",asynchandler(async(req,res,next)=>{
     }
 
 }))
+
 module.exports=cartApiObj;

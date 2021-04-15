@@ -11,7 +11,7 @@ wishlistApiObj.post("/addto",asynchandler( async(req,res,next)=>{
     let cartObj=req.body;
     //console.log(cartObj)
    
-    let cart = await wishlistCollectionObj.findOne({productname:cartObj.productname,username:cartObj.username})
+    let cart = await wishlistCollectionObj.findOne({productname:cartObj.productname,userId:cartObj.userId})
     
     if(cart!==null){
         res.send({message:"Item already added"})
@@ -22,10 +22,10 @@ wishlistApiObj.post("/addto",asynchandler( async(req,res,next)=>{
     }
    
 }))
-wishlistApiObj.get("/getwishlistitems/:username",asynchandler(async(req,res,next)=>{
+wishlistApiObj.get("/getwishlistitems/:userId",asynchandler(async(req,res,next)=>{
 
     let wishlistCollectionObj=req.app.get("wishlistCollectionObj");
-    let products=await wishlistCollectionObj.find({username:req.params.username}).toArray();
+    let products=await wishlistCollectionObj.find({userId:req.params.userId}).toArray();
     //console.log(products)
 
     res.send({message:products})

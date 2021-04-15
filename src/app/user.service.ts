@@ -29,18 +29,18 @@ export class UserService {
     usercart(obj):Observable<any>{
       return this.hc.post("/cart/addtocart",obj);
     }
-
-    getCartItems(username):Observable<any>{
+    getCartItems(userId):Observable<any>{
       //console.log("the username is ",username)
-      return this.hc.get("/cart/getcartitems/"+username);
+      return this.hc.get("/cart/getcartitems/"+userId);
     }
     deleteCartProduct(obj):Observable<any>{
       return this.hc.post("/cart/deleteproduct",obj);
     }
 
-    getCartSize(username){
-      return this.hc.get("/cart/getsize/"+username);
+    getCartSize(userId){
+      return this.hc.get("/cart/getsize/"+userId);
     }
+   
   
      //orders
 
@@ -49,15 +49,15 @@ export class UserService {
     return this.hc.post("/order/orders",obj);
   }
   
-  getOrderItems(username:any):Observable<any>{
+  getOrderItems(userId:any):Observable<any>{
     //console.log("the username is ",username)
-    return this.hc.get("/order/getOrderitem/"+username);
+    return this.hc.get("/order/getOrderitem/"+userId);
   }
   deleteOrderProduct(obj5:any):Observable<any>{
     return this.hc.post("/order/deleteOrder",obj5);
   }
-  getOrderSize(username){
-    return this.hc.get("/order/ordersize/"+username);
+  getOrderSize(userId){
+    return this.hc.get("/order/ordersize/"+userId);
   }
   deleteOrder1(obj:any):Observable<any>{
    
@@ -71,8 +71,8 @@ export class UserService {
   userwishlist(obj):Observable<any>{
     return this.hc.post("/wish/addto",obj)
   }
-  getWishlistItems(username):Observable<any>{
-    return this.hc.get("/wish/getwishlistitems/"+username);
+  getWishlistItems(userId):Observable<any>{
+    return this.hc.get("/wish/getwishlistitems/"+userId);
   }
   deleteWishlistProduct(obj):Observable<any>{
    

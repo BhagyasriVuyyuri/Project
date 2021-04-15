@@ -1,4 +1,4 @@
-
+<body>
 <h1 class="text-center  py-3" style="color:rgb(17, 17, 224)"><b>SIGN UP</b></h1>
 <div class="container">
     <div class="row">
@@ -53,7 +53,7 @@
                      Password should have atleast 1 capital letter and 1 number.</p>
         </div>
         <div class="col-12 mt-3 ">
-            <button type="submit" class="btn btn-success text-white" [disabled]="registerForm.invalid">Register</button>
+            <button type="submit" class="btn btn-success text-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop"  [disabled]="registerForm.invalid">Register</button>
         </div>
         <div>
             <a class="nav-link" routerLink="login" routerLinkActive="active" (click)="login()" style="color:purple;"><h5 class="far fa-user m-2">Existing User? Log in</h5></a>
@@ -64,3 +64,20 @@
     </div>
     
 </div>
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">User registered successfully</h5>
+          <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+           UserId is :{{userId}}
+        </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary d-block mx-auto" data-bs-dismiss="modal" (click)="login()">Close</button>
+            </div>
+      </div>
+    </div>
+  </div>
+</body>

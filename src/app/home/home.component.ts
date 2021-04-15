@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
   userCartSize;
   userOrderSize;
   cartsize;
+  userId
   successmessage;
   errormessage;
   constructor(private as:AdminService,private us:UserService,private router:Router,private toastr:ToastrService) { }
@@ -34,7 +35,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
    
     this.username=localStorage.getItem("username")
-    
+    this.userId=localStorage.getItem("userId")
     this.getAllProducts();
     this.cartStatus();
     this.orderStatus();
@@ -103,7 +104,7 @@ export class HomeComponent implements OnInit {
           }
         
         cartStatus(){
-          this.us.getCartSize(this.username).subscribe(
+          this.us.getCartSize(this.userId).subscribe(
             res=>{
               this.userCartSize=res["cartsize"];
             },
@@ -116,7 +117,7 @@ export class HomeComponent implements OnInit {
       
         }
         orderStatus(){
-          this.us.getOrderSize(this.username).subscribe(
+          this.us.getOrderSize(this.userId).subscribe(
             res=>{
               this.userOrderSize=res["ordersize"];
             },
@@ -134,6 +135,7 @@ export class HomeComponent implements OnInit {
           if(this.username!==null){
             let obj={
             username:this.username,
+            userId:this.userId,
             productname:this.products[n].productname,
             productID:this.products[n].productID,
             brand:this.products[n].brand,
@@ -182,6 +184,7 @@ export class HomeComponent implements OnInit {
           if(this.username!==null){
             let obj={
             username:this.username,
+            userId:this.userId,
             productname:this.products[n].productname,
             productID:this.products[n].productID,
             brand:this.products[n].brand,

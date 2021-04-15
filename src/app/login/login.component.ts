@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
         res=>{
           if(res["message"]=="success"){
             localStorage.setItem("token",res["signedToken"])
+            localStorage.setItem("userId",res["userId"])
               localStorage.setItem("username",res["username"])
               if(res.username=="Admin"){
                 this.router.navigateByUrl("/admincomp")

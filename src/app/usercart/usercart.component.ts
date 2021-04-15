@@ -17,10 +17,12 @@ export class UsercartComponent implements OnInit {
   itemsArray=[];
   status=false;
   spinner:any=0;
+  userId;
   constructor(private us:UserService,private router:Router,private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.username=localStorage.getItem("username")
+    this.userId=localStorage.getItem("userId")
     this.getCart();
     this.totalamount(); 
     this.checkCart();
@@ -69,7 +71,7 @@ export class UsercartComponent implements OnInit {
     this.router.navigateByUrl("/home");
   }
   orderStatus(){
-    this.us.getOrderSize(this.username).subscribe(
+    this.us.getOrderSize(this.userId).subscribe(
       res=>{
         this.userOrderSize=res["ordersize"];
       },
@@ -86,7 +88,7 @@ export class UsercartComponent implements OnInit {
     this.router.navigateByUrl("/home")
   }
   getCart(){
-    this.us.getCartItems(this.username).subscribe(
+    this.us.getCartItems(this.userId).subscribe(
       res=>{
         this.spinner=1
         this.cart=res["message"]
@@ -147,6 +149,7 @@ export class UsercartComponent implements OnInit {
     if(this.username!==null){
       let obj={
       username:this.username,
+      userId:this.userId,
       productname:this.cart[n].productname,
 
       colour:this.cart[n].colour,
