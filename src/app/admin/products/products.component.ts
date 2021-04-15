@@ -39,7 +39,6 @@ export class ProductsComponent implements OnInit {
     )
   }
 
-
   delete(n:number){
     let obj=this.products[n];
     console.log("the deleted obj is ",obj)
