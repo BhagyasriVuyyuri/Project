@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   admin=false;
  
   c;
-  spinner:any=0;
+  spinner=true;
   category;
   cat=false;
   username;
@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
   getAllProducts(){
     this.as.getProducts().subscribe(
       res=>{
-        this.spinner=1
+        this.spinner=false
         this.products=res["message"]
       },
       err=>{

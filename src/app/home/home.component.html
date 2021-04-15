@@ -95,7 +95,7 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-  <div class=" d-flex align-items-center justify-content-center" *ngIf="spinner==0" style="height: 550px;">
+  <div class=" d-flex align-items-center justify-content-center" *ngIf="spinner==true" style="height: 550px;">
         
       
     <div class="spinner-border text-primary" role="status" >
@@ -143,7 +143,7 @@
         </div>
     
 
-  <div class="container  col-md-10" style="background-color: turquoise;border-radius: 1%;" *ngIf="spinner==1">
+  <div class="container  col-md-10" style="background-color: turquoise;border-radius: 1%;" *ngIf="spinner==false">
      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-4" *ngIf="!cat">
        <div *ngFor="let p of products|search:searchTerm|search:category;let i=index" >
             <div class="col">

@@ -12,7 +12,7 @@ export class PlaceorderComponent implements OnInit {
 
   username:any;
   order:any;
-  spinner:any=0;
+  spinner=true;
   userId;
   constructor(private us:UserService,private router:Router,private toastr:ToastrService) { }
 
@@ -32,7 +32,7 @@ export class PlaceorderComponent implements OnInit {
   getCart(){
     this.us.getOrderItems(this.userId).subscribe(
       res=>{
-        this.spinner=1
+        this.spinner=false
         this.order=res["message"]
         console.log("placeorder data is",this.order)
       },
